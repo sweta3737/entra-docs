@@ -73,6 +73,7 @@ function renderTasks() {
         checkbox.type = 'checkbox';
         checkbox.className = 'task-checkbox';
         checkbox.checked = task.completed;
+        checkbox.setAttribute('aria-label', `Mark "${task.text}" as ${task.completed ? 'incomplete' : 'complete'}`);
         checkbox.addEventListener('change', () => toggleTask(task.id));
         
         const span = document.createElement('span');
@@ -82,6 +83,7 @@ function renderTasks() {
         const deleteBtn = document.createElement('button');
         deleteBtn.className = 'delete-btn';
         deleteBtn.textContent = 'Delete';
+        deleteBtn.setAttribute('aria-label', `Delete task: ${task.text}`);
         deleteBtn.addEventListener('click', () => deleteTask(task.id));
         
         li.appendChild(checkbox);
